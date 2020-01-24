@@ -2,6 +2,9 @@
   "name": "fashion-clothing",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "^12.13.1"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
