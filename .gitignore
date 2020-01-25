@@ -23,4 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 # other
+firebase/
 test.js
