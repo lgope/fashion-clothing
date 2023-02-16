@@ -1,58 +1,42 @@
-import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { useEffect, lazy, Suspense } from 'react';
+import { useDispatch } from 'react-redux';
 
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
 
-import HomePage from './pages/homepage/homepage.component';
-import shopPage from './pages/shop/shopPage.component';
-import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
-import Header from './components/header/header.component';
-import { auth, createUserProfileDoc } from './firebase/firebase.utils';
+import Spinner from './components/spinner/spinner.component';
+import { checkUserSession } from './store/user/user.action';
+import { GlobalStyle } from './global.styles';
 
-class App extends Component {
-  state = {
-    currentUser: null,
-  };
+const Navigation = lazy(() =>
+  import('./routes/navigation/navigation.component')
+);
+const Shop = lazy(() => import('./routes/shop/shop.component'));
+const Checkout = lazy(() => import('./routes/checkout/checkout.component'));
+const Home = lazy(() => import('./routes/home/home.component'));
+const Authentication = lazy(() =>
+  import('./routes/authentication/authentication.component')
+);
 
-  unsubscribeFromAuth = null;
-  componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-      if (userAuth) {
-        const userRef = await createUserProfileDoc(userAuth);
+const App = () => {
+  const dispatch = useDispatch();
 
-        userRef.onSnapshot(snapShot => {
-          this.setState(
-            {
-              currentUser: {
-                id: snapShot.id,
-                ...snapShot.data(),
-              },
-            },
-            () => {
-              console.log(this.state);
-            }
-          );
-        });
-      } else this.setState({ currentUser: userAuth });
-    });
-  }
+  useEffect(() => {
+    dispatch(checkUserSession());
+  }, []);
 
-  componentWillUnmount() {
-    this.unsubscribeFromAuth();
-  }
-
-  render() {
-    return (
-      <div>
-        <Header currentUser={this.state.currentUser} />
-        <Switch>
-          <Route exact path='/' component={HomePage} />
-          <Route path='/shop' component={shopPage} />
-          <Route path='/signin' component={SignInAndSignUpPage} />
-        </Switch>
-      </div>
-    );
-  }
-}
+  return (
+    <Suspense fallback={<Spinner />}>
+      <GlobalStyle />
+      <Routes>
+        <Route path='/' element={<Navigation />}>
+          <Route index element={<Home />} />
+          <Route path='shop/*' element={<Shop />} />
+          <Route path='auth' element={<Authentication />} />
+          <Route path='checkout' element={<Checkout />} />
+        </Route>
+      </Routes>
+    </Suspense>
+  );
+};
 
 export default App;
