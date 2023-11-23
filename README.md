@@ -17,28 +17,21 @@ Full Stack e-commerce website where peoples can purchase their choosable clothes
 ![collections](https://user-images.githubusercontent.com/58518192/73131703-3930c600-403a-11ea-9805-ea0c41614264.gif)
 
 ## Technologies used 🛠️
-**Deployment**: *Heroku* || *Netlify* <br />
-**Design**: *Sass & Styled Components*<br />
-**Authentication**: *Firebase auth*<br />
-**Database**: *Firebase Firestore*<br />
-**Backend**: *Firebase & NodeJs* <br />
-**Api**: *Stripe* <br />
-**Libraries**: <br />
-    - **redux-logger**: console logging redux data flow <br />
-    - **redux**: state management <br />
-    - **redux-thunk**: handling asynchronous events <br />
-    - **redux-saga**: handling asynchronous events keeping actions pure <br />
-    - **axios**: implement api requests with ease <br />
-    - **reselect**: reusing redux selectors in a performant way <br />
-    - **redux-persist**: storing data in local storage <br />
-    - **compression**: for gzipping our files on heroku <br />
-    - **concurrently**: for running multiple scripts concurrently <br />
+
+**Deployment**: _Heroku_ || _Netlify_ <br />
+**Design**: _Sass & Styled Components_<br />
+**Authentication**: _Firebase auth_<br />
+**Database**: _Firebase Firestore_<br />
+**Backend**: _Firebase & NodeJs_ <br />
+**Api**: _Stripe_ <br />
+**Libraries**: <br /> - **redux-logger**: console logging redux data flow <br /> - **redux**: state management <br /> - **redux-thunk**: handling asynchronous events <br /> - **redux-saga**: handling asynchronous events keeping actions pure <br /> - **axios**: implement api requests with ease <br /> - **reselect**: reusing redux selectors in a performant way <br /> - **redux-persist**: storing data in local storage <br /> - **compression**: for gzipping our files on heroku <br /> - **concurrently**: for running multiple scripts concurrently <br />
 
 ## Work In Progress ⚒️
 
 The app is being under maintenance, as more work needs to be done.
 
 ## Current functionality includes🔥
+
 ✔️ Authentication with Google account <br />
 ✔️ Authentication with email & password <br />
 ✔️ Persistant data with local storage <br />
@@ -51,6 +44,7 @@ The app is being under maintenance, as more work needs to be done.
 ✔️ Payments with Stripe (Testing Mode) <br />
 
 ## Usage 📋
+
 <details open>
 <summary>1. Server Setup</summary>
 
@@ -66,7 +60,9 @@ The app is being under maintenance, as more work needs to be done.
 #4. run app (both client & server)
 ~ npm run dev
 ```
-*available scripts*
+
+_available scripts_
+
 ```bash
 ~ npm run client
 ~ npm run server
@@ -75,48 +71,55 @@ The app is being under maintenance, as more work needs to be done.
 ~ npm start
 ~ npm run heroku-postbuild
 ```
+
 </details>
 
-<details>
+<details open>
 <summary>2. Firebase Setup</summary>
 
 Remember to replace the `config` variable in your `firebase.utils.js` with your own config object from the firebase dashboard! Navigate to the project settings and scroll down to the config code. Copy the object in the code and replace the variable in your cloned code.
 
 ![alt text](https://i.ibb.co/6ywMkBf/Screen-Shot-2019-07-01-at-11-35-02-AM.png "image to firebase config")
+
 </details>
 
-
-<details>
+<details open>
 <summary>3. Stripe Setup</summary>
 
 ## Publishable Key
+
 Set the `publishableKey` variable in the `StripeButton.jsx` with your own publishable key from the stripe dashboard.
 
 ![alt text](https://i.ibb.co/djQTmVF/Screen-Shot-2019-07-01-at-2-18-50-AM.png "image to publishable key")
 
 ## Secret Key
-**First of all** *You need first to get your secret key from* [here](https://dashboard.stripe.com/test/apikeys) <br>
+
+**First of all** _You need first to get your secret key from_ [here](https://dashboard.stripe.com/test/apikeys) <br>
 **Then**
+
 ```bash
 # Rename example.env to .env
 ~ mv example.env .env
 ```
-**Finally** *copy your secret key inside .env folder*
->! You don't need to put it in quotation marks '' ""
+
+**Finally** _copy your secret key inside .env folder_
+
+> ! You don't need to put it in quotation marks '' ""
+
 ```
 STRIPE_SECRET_KEY=YOUR_SECRET_KEY_GOES_HERE
 ```
 
 </details>
 
-<details>
+<details open>
 <summary>4. Heroku Setup</summary>
 
 ## Things to set before you deploy
 
 You will also need to connect your existing Heroku app to this new forked and cloned repo, or you have to create a new Heroku app and push to it. A quick refresher on how to do either of these:
 
-<details>
+<details open>
 <summary>Set to an existing Heroku app</summary>
 
 To set to an existing Heroku app you already have deployed, you need to know the name of the app you want to deploy to. To see a list of all the apps you currently have on Heroku:
@@ -134,9 +137,10 @@ heroku git:remote -a <PASTE_YOUR_APP_NAME_HERE>
 And now you'll have your repo connected to the heroku app under the git remote name `heroku`.
 
 Then skip to the bottom of this article to see what to do next!
+
 </details>
 
-<details>
+<details open>
 <summary>Create a new Heroku app</summary>
 <br>
 Create a new Heroku project by typing in your terminal:
@@ -152,9 +156,10 @@ git remote -v
 ```
 
 You should see heroku `https://git.heroku.com/<RANDOMLY_GENERATED_NAME_OF_YOUR_APP>` in the list. This means you have successfully connected your project to the newly created Heroku app under the git remote of `heroku`.
+
 </details>
 
-<details>
+<details open>
 <summary>Deploying to Heroku</summary>
 
 Add the `mars/create-react-app-buildpack` to your heroku project by typing:
@@ -191,7 +196,7 @@ This will overwrite the existing Heroku app with our new code.
 
 </details>
 
-<details>
+<details open>
 <summary>Open our Heroku project</summary>
 
 After heroku finishes building our project, we can simply run:
@@ -201,12 +206,14 @@ heroku open
 ```
 
 This will open up our browser and take us to our newly deployed Heroku project!
+
 </details>
 </details>
 
 </details>
 
 ## Contributing 💡
+
 Pull request are welcome but please open an issue and discuss what you will do before 😊
 
 ## Known Bugs 🚨
@@ -225,6 +232,7 @@ and feel free to share your opinion, constructive criticism, or comments about m
 And More ! There's always room for improvement!
 
 ## License 📄
+
 This project is open-sourced under the [MIT license](https://opensource.org/licenses/MIT).
 
 ## Deployed Version 🚀
